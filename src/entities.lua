@@ -5,6 +5,8 @@ local paddle = require('entities/paddle')
 local ball = require('entities/ball')
 local brick = require('entities/brick')
 local pause_overlay = require('entities/pause_overlay')
+local game_over_text = require('entities/game_over_text')
+local stage_clear_text = require('entities/stage_clear_text')
 
 local entities = {
     boundary_bottom(400, 606),
@@ -13,7 +15,9 @@ local entities = {
     boundary_top(400, -6),
     paddle(300, 500),
     ball(200, 200),
-    pause_overlay()
+    pause_overlay(),
+    game_over_text(),
+    stage_clear_text()
 }
 
 local row_width = love.window.getMode() - 20
