@@ -11,4 +11,5 @@ return {
     },
     paused = false,
     stage_cleared = false,
+    lives = 3,
 }
