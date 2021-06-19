@@ -41,3 +41,7 @@ luac.out
 
 
 .idea/
+
+src/api/
+
+src/modules/
