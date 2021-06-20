@@ -1,6 +1,6 @@
 local BoundaryBottom = require 'entities/boundary_bottom'
 local boundary_vertical = require('entities/boundary_vertical')
-local boundary_top = require('entities/boundary_top')
+local BoundaryTop = require 'entities/boundary_top'
 local paddle = require('entities/paddle')
 local Ball = require 'entities/ball'
 local brick = require('entities/brick')
@@ -13,7 +13,7 @@ local entities = {
     BoundaryBottom(400, 606),
     boundary_vertical(-6, 300),
     boundary_vertical(806, 300),
-    boundary_top(400, -6),
+    BoundaryTop(400, -6),
     paddle(300, 500),
     Ball(200, 200),
     pause_overlay(),

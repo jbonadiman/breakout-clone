@@ -1,11 +1,18 @@
-local world = require('world')
+local world = require 'world'
+local Object = require 'classic'
 
-return function(x, y)
-    local entity = {}
-    entity.body = love.physics.newBody(world, x, y, 'static')
-    entity.shape = love.physics.newRectangleShape(800, 10)
-    entity.fixture = love.physics.newFixture(entity.body, entity.shape)
-    entity.fixture:setUserData(entity)
+BoundaryTop = Object:extend()
 
-    return entity
+function BoundaryTop:new(x, y)
+    self.x = x or 0
+    self.y = y or 0
+    self.width = 800
+    self.height = 10
+
+    self.body = love.physics.newBody(world, self.x, self.y, 'static')
+    self.shape = love.physics.newRectangleShape(self.width, self.height)
+    self.fixture = love.physics.newFixture(self.body, self.shape)
+    self.fixture:setUserData(self)
 end
+
+return BoundaryTop
