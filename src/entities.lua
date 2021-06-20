@@ -1,6 +1,6 @@
 local Boundary = require 'entities/boundary'
 local BoundaryContact = require 'entities/boundary_contact'
-local paddle = require('entities/paddle')
+local Paddle = require 'entities/paddle'
 local Ball = require 'entities/ball'
 local Brick = require 'entities/brick'
 local pause_overlay = require('entities/pause_overlay')
@@ -13,7 +13,7 @@ local entities = {
     Boundary(806, 300, 10, 600),        -- right
     Boundary(400, -6, 800, 10),         -- top
     BoundaryContact(400, 606, 800, 10), -- bottom
-    paddle(300, 500),
+    Paddle(300, 500),
     Ball(200, 200),
     pause_overlay(),
     GameOverText(),

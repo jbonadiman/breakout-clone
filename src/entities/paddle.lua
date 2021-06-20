@@ -1,42 +1,46 @@
-local state = require('state')
-local world = require('world')
+local state = require 'state'
+local world = require 'world'
+local Object = require 'classic'
 
-return function(x, y)
-    local window_width = love.window.getMode()
+local window_width = love.window.getMode()
 
-    local entity_width = 120
-    local entity_height = 20
-    local entity_speed = 600
+Paddle = Object:extend()
 
-    local left_boundary = (entity_width / 2) + 2
-    local right_boundary = window_width - (entity_width / 2) - 2
+function Paddle:new(x, y)
+    self.x = x or 0
+    self.y = y or 0
+    self.width = 120
+    self.height = 20
+    self.speed = 600
 
-    local entity = {}
-    entity.body = love.physics.newBody(world, x, y, 'kinematic')
-    entity.shape = love.physics.newRectangleShape(entity_width, entity_height)
-    entity.fixture = love.physics.newFixture(entity.body, entity.shape)
-    entity.fixture:setUserData(entity)
+    self.left_boundary = (self.width / 2) + 2
+    self.right_boundary = window_width - (self.width / 2) - 2
 
-    entity.draw = function(self)
-        love.graphics.polygon(
-            'line', self.body:getWorldPoints(self.shape:getPoints())
-        )
-    end
-
-    entity.update = function(self)
-        if state.button_left and state.button_right then
-            return
-        end
-
-        local self_x = self.body:getX()
-        if state.button_left and self_x > left_boundary then
-            self.body:setLinearVelocity(-entity_speed, 0)
-        elseif state.button_right and self_x < right_boundary then
-            self.body:setLinearVelocity(entity_speed, 0)
-        else
-            self.body:setLinearVelocity(0, 0)
-        end
-    end
-
-    return entity
+    self.body = love.physics.newBody(world, self.x, self.y, 'kinematic')
+    self.shape = love.physics.newRectangleShape(self.width, self.height)
+    self.fixture = love.physics.newFixture(self.body, self.shape)
+    self.fixture:setUserData(self)
 end
+
+function Paddle:draw()
+    love.graphics.polygon(
+        'line', self.body:getWorldPoints(self.shape:getPoints())
+    )
+end
+
+function Paddle:update()
+    if state.button_left and state.button_right then
+        return
+    end
+
+    local self_x = self.body:getX()
+    if state.button_left and self_x > self.left_boundary then
+        self.body:setLinearVelocity(-self.speed, 0)
+    elseif state.button_right and self_x < self.right_boundary then
+        self.body:setLinearVelocity(self.speed, 0)
+    else
+        self.body:setLinearVelocity(0, 0)
+    end
+end
+
+return Paddle
