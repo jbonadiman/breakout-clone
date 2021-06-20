@@ -3,6 +3,14 @@ local input = require('input')
 local state = require('state')
 local world = require('world')
 
+love.load = function()
+    for _, entity in ipairs(entities) do
+        if entity.load then
+            entity:load()
+        end
+    end
+end
+
 love.draw = function()
     for _, entity in ipairs(entities) do
         if entity.draw then
