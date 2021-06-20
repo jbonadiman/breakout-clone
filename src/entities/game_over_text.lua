@@ -1,22 +1,21 @@
-local state = require('state')
+local state = require 'state'
+local Object = require 'classic'
 
-return function()
-    local window_width, window_height = love.window.getMode()
+local window_width, window_height = love.window.getMode()
 
-    local entity = {}
+GameOverText = Object:extend()
 
-    entity.draw = function(self)
-        if state.game_over then
-            love.graphics.print(
-                { state.palette[5], 'GAME OVER' },
-                math.floor(window_width / 2) - 100,
-                math.floor(window_height / 2),
-                0,
-                2,
-                2
-            )
-        end
+function GameOverText:draw()
+    if state.game_over then
+        love.graphics.print(
+            { state.palette[5], 'GAME OVER' },
+            math.floor(window_width / 2) - 100,
+            math.floor(window_height / 2),
+            0,
+            2,
+            2
+        )
     end
-
-    return entity
 end
+
+return GameOverText
