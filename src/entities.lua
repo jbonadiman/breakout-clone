@@ -5,7 +5,7 @@ local Ball = require 'entities/ball'
 local Brick = require 'entities/brick'
 local PauseOverlay = require 'entities/pause_overlay'
 local GameOverText = require 'entities/game_over_text'
-local stage_clear_text = require('entities/stage_clear_text')
+local StageClearText = require 'entities/stage_clear_text'
 local heart = require('entities/ui/heart')
 
 local entities = {
@@ -17,7 +17,7 @@ local entities = {
     Ball(200, 200),
     PauseOverlay(),
     GameOverText(),
-    stage_clear_text(),
+    StageClearText(),
     heart()
 }
 
