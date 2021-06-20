@@ -1,18 +1,24 @@
-local state = require('state')
-local world = require('world')
+local state = require 'state'
+local world = require 'world'
+local Object = require 'classic'
 
-return function(x, y)
-    local entity = {}
-    entity.body = love.physics.newBody(world, x, y, 'static')
-    entity.shape = love.physics.newRectangleShape(800, 10)
-    entity.fixture = love.physics.newFixture(entity.body, entity.shape)
-    entity.fixture:setUserData(entity)
+BoundaryBottom = Object:extend()
 
-    entity.end_contact = function(self)
-        state.lives = state.lives - 1
+function BoundaryBottom:new(x, y)
+    self.x = x or 0
+    self.y = y or 0
+    self.width = 800
+    self.height = 10
 
-        if state.lives < 1 then state.game_over = true end
-    end
-
-    return entity
+    self.body = love.physics.newBody(world, self.x, self.y, 'static')
+    self.shape = love.physics.newRectangleShape(self.width, self.height)
+    self.fixture = love.physics.newFixture(self.body, self.shape)
+    self.fixture:setUserData(self)
 end
+
+function BoundaryBottom:endContact()
+    state.lives = state.lives - 1
+    state.game_over = state.lives < 1
+end
+
+return BoundaryBottom

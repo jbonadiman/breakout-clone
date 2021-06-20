@@ -2,11 +2,11 @@ local end_contact_callback = function(a, b, contact)
     local entity_a = a:getUserData()
     local entity_b = b:getUserData()
 
-    if entity_a.end_contact then
-        entity_a:end_contact()
+    if entity_a.endContact then
+        entity_a:endContact()
     end
-    if entity_b.end_contact then
-        entity_b:end_contact()
+    if entity_b.endContact then
+        entity_b:endContact()
     end
 end
 

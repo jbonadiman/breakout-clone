@@ -1,4 +1,4 @@
-local boundary_bottom = require('entities/boundary_bottom')
+local BoundaryBottom = require 'entities/boundary_bottom'
 local boundary_vertical = require('entities/boundary_vertical')
 local boundary_top = require('entities/boundary_top')
 local paddle = require('entities/paddle')
@@ -10,7 +10,7 @@ local stage_clear_text = require('entities/stage_clear_text')
 local heart = require('entities/ui/heart')
 
 local entities = {
-    boundary_bottom(400, 606),
+    BoundaryBottom(400, 606),
     boundary_vertical(-6, 300),
     boundary_vertical(806, 300),
     boundary_top(400, -6),

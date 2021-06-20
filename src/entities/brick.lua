@@ -20,7 +20,7 @@ return function(x, y)
         love.graphics.setColor(state.palette[5])
     end
 
-    entity.end_contact = function(self)
+    entity.endContact = function(self)
         self.health = self.health - 1
     end
 
