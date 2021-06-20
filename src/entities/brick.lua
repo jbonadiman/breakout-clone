@@ -1,28 +1,32 @@
-local state = require('state')
-local world = require('world')
+local state = require 'state'
+local world = require 'world'
+local Object = require 'classic'
 
-return function(x, y)
-    local entity = {}
-    entity.body = love.physics.newBody(world, x, y, 'static')
-    entity.shape = love.physics.newRectangleShape(50, 20)
-    entity.fixture = love.physics.newFixture(entity.body, entity.shape)
-    entity.fixture:setUserData(entity)
-    entity.max_health = 2
-    entity.health = entity.max_health
-    entity.type = 'brick'
+Brick = Object:extend()
 
-    entity.draw = function(self)
-        --if self.health < self.max_health then
-        --    love.graphics.setColor({1, 1, 1, 0.5})
-        --end
-        love.graphics.setColor(state.palette[self.health] or state.palette[5])
-        love.graphics.polygon('fill', self.body:getWorldPoints(self.shape:getPoints()))
-        love.graphics.setColor(state.palette[5])
-    end
+function Brick:new(x, y)
+    self.x = x or 0
+    self.y = y or 0
+    self.width = 50
+    self.height = 20
+    self.max_health = 2
+    self.health = self.max_health
+    self.type = 'brick'
 
-    entity.endContact = function(self)
-        self.health = self.health - 1
-    end
-
-    return entity
+    self.body = love.physics.newBody(world, x, y, 'static')
+    self.shape = love.physics.newRectangleShape(self.width, self.height)
+    self.fixture = love.physics.newFixture(self.body, self.shape)
+    self.fixture:setUserData(self)
 end
+
+function Brick:draw()
+    love.graphics.setColor(state.palette[self.health] or state.palette[5])
+    love.graphics.polygon('fill', self.body:getWorldPoints(self.shape:getPoints()))
+    love.graphics.setColor(state.palette[5])
+end
+
+function Brick:endContact()
+    self.health = self.health - 1
+end
+
+return Brick
