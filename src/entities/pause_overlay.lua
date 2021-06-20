@@ -1,25 +1,23 @@
-local state = require('state')
+local state = require 'state'
+local Object = require 'classic'
 
-return function()
-    local window_width, window_height = love.window.getMode()
+PauseOverlay = Object:extend()
+local window_width, window_height = love.window.getMode()
 
-    local entity = {}
-
-    entity.draw = function(self)
-        if state.paused then
-            love.graphics.setColor({ 1, 1, 1, 0.2 })
-            love.graphics.rectangle('fill', 0, 0, window_width, window_height)
-            love.graphics.setColor(state.palette[5])
-            love.graphics.print(
-                { state.palette[3], 'PAUSED' },
-                math.floor(window_width / 2) - 54,
-                math.floor(window_height / 2),
-                0,
-                2,
-                2
-            )
-        end
+function PauseOverlay:draw()
+    if state.paused then
+        love.graphics.setColor({ 1, 1, 1, 0.2 })
+        love.graphics.rectangle('fill', 0, 0, window_width, window_height)
+        love.graphics.setColor(state.palette[5])
+        love.graphics.print(
+            { state.palette[3], 'PAUSED' },
+            math.floor(window_width / 2) - 54,
+            math.floor(window_height / 2),
+            0,
+            2,
+            2
+        )
     end
-
-    return entity
 end
+
+return PauseOverlay
