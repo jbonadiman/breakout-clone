@@ -1,4 +1,4 @@
-local entities = require('entities')
+local entities = require 'entities'
 local input = require('input')
 local state = require('state')
 local world = require('world')

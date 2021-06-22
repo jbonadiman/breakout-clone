@@ -6,19 +6,19 @@ local Brick = require 'entities/brick'
 local PauseOverlay = require 'entities/pause_overlay'
 local GameOverText = require 'entities/game_over_text'
 local StageClearText = require 'entities/stage_clear_text'
-local heart = require('entities/ui/heart')
+local Lives = require 'entities/ui/lives'
 
 local entities = {
     Boundary(-6, 300, 10, 600),         -- left
     Boundary(806, 300, 10, 600),        -- right
     Boundary(400, -6, 800, 10),         -- top
     BoundaryContact(400, 606, 800, 10), -- bottom
+    Lives(8, 16),
     Paddle(300, 500),
     Ball(200, 200),
     PauseOverlay(),
     GameOverText(),
     StageClearText(),
-    heart()
 }
 
 local row_width = love.window.getMode() - 20
