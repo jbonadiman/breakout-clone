@@ -1,7 +1,7 @@
 local entities = require 'entities'
-local input = require('input')
-local state = require('state')
-local world = require('world')
+local input = require 'input'
+local state = require 'state'
+local world = require 'world'
 
 love.load = function()
     for _, entity in ipairs(entities) do
@@ -48,6 +48,7 @@ love.update = function(dt)
         if entity.health and entity.health < 1 then
             table.remove(entities, index)
             entity.fixture:destroy()
+            state.score = state.score + entity.score
         else
             index = index + 1
         end

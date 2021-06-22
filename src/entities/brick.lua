@@ -9,6 +9,7 @@ function Brick:new(x, y)
     self.y = y or 0
     self.width = 50
     self.height = 20
+    self.score = 50
     self.max_health = 2
     self.health = self.max_health
     self.type = 'brick'

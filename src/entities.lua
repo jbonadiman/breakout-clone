@@ -7,6 +7,7 @@ local PauseOverlay = require 'entities/pause_overlay'
 local GameOverText = require 'entities/game_over_text'
 local StageClearText = require 'entities/stage_clear_text'
 local Lives = require 'entities/ui/lives'
+local Score = require 'entities/ui/score'
 
 local entities = {
     Boundary(-6, 300, 10, 600),         -- left
@@ -14,6 +15,7 @@ local entities = {
     Boundary(400, -6, 800, 10),         -- top
     BoundaryContact(400, 606, 800, 10), -- bottom
     Lives(8, 16),
+    Score(),
     Paddle(300, 500),
     Ball(200, 200),
     PauseOverlay(),
