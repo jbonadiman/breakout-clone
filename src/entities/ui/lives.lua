@@ -1,4 +1,4 @@
-local state = require('state')
+local state = require 'state'
 local Object = require 'classic'
 
 Heart = Object:extend()
@@ -24,13 +24,8 @@ end
 
 Lives = Object:extend()
 
-function Lives:load()
+function Lives.load()
     Heart.load()
-
-    for i, entity in ipairs(self.lives) do
-        entity.x = Heart.width * (i - 1) + self.x
-        entity.y = self.y
-    end
 end
 
 function Lives:new(x, y)
@@ -38,8 +33,11 @@ function Lives:new(x, y)
     self.y = y or 0
 
     self.lives = {}
+
     for i = 1, state.lives do
-        self.lives[i] = Heart()
+        self.lives[i] = Heart(
+            Heart.width * (i - 1) + self.x,
+            self.y)
     end
 end
 
