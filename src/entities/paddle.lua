@@ -6,12 +6,19 @@ local window_width = love.window.getMode()
 
 Paddle = Object:extend()
 
+function Paddle.load()
+    Paddle.sprite = love.graphics.newImage("spr/paddle.png")
+    Paddle.width = Paddle.sprite:getWidth()
+    Paddle.height = Paddle.sprite:getHeight()
+end
+
 function Paddle:new(x, y)
     self.x = x or 0
     self.y = y or 0
-    self.width = 120
-    self.height = 20
+    self.width = Paddle.width
+    self.height = Paddle.height
     self.speed = 600
+    self.sprite = Paddle.sprite
 
     self.left_boundary = (self.width / 2) + 2
     self.right_boundary = window_width - (self.width / 2) - 2
@@ -23,8 +30,12 @@ function Paddle:new(x, y)
 end
 
 function Paddle:draw()
-    love.graphics.polygon(
-        'line', self.body:getWorldPoints(self.shape:getPoints())
+    local x, y = self.body:getPosition()
+
+    love.graphics.draw(
+        Paddle.sprite,
+        x - math.floor(self.width / 2),
+        y - math.floor(self.height / 2)
     )
 end
 
