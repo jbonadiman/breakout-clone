@@ -17,9 +17,10 @@ end
 
 function PauseOverlay:draw()
     if state.paused then
-        love.graphics.setColor({ 1, 1, 1, 1 })
+        love.graphics.setColor({ 1, 1, 1, 0.2 })
         love.graphics.rectangle('fill', 0, 0, window_width, window_height)
 
+        love.graphics.setColor({ 1, 1, 1, 1 })
         love.graphics.draw(
             PauseOverlay.text,
             PauseOverlay.x,
