@@ -13,9 +13,9 @@ end
 function Ball:new(x, y)
     self.x = x or 0
     self.y = y or 0
-    self.sprite = Paddle.sprite
-    self.width = Paddle.width
-    self.height = Paddle.height
+    self.sprite = Ball.sprite
+    self.width = Ball.width
+    self.height = Ball.height
 
     self.body = love.physics.newBody(world, self.x, self.y, 'dynamic')
     self.body:setMass(32)
