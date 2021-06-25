@@ -15,10 +15,10 @@ end
 function Paddle:new(x, y)
     self.x = x or 0
     self.y = y or 0
+    self.sprite = Paddle.sprite
     self.width = Paddle.width
     self.height = Paddle.height
     self.speed = 600
-    self.sprite = Paddle.sprite
 
     self.left_boundary = (self.width / 2) + 2
     self.right_boundary = window_width - (self.width / 2) - 2

@@ -3,7 +3,7 @@
     <module name="breakout-clone" />
     <option name="program" value="C:\Program Files\LOVE\love.exe" />
     <option name="file" value="" />
-    <option name="workingDir" value="C:\Users\joao.bonadiman\sources\Personal\love\breakout-clone\src" />
+    <option name="workingDir" value="C:\Users\Joao\sources\breakout-clone\src" />
     <option name="debuggerType" value="2" />
     <option name="params" value="." />
     <option name="charset" value="UTF-8" />

@@ -4,13 +4,23 @@ local Object = require 'classic'
 Ball = Object:extend()
 Ball.max_speed = 880
 
+function Ball.load()
+    Ball.sprite = love.graphics.newImage("spr/ball.png")
+    Ball.width = Ball.sprite:getWidth()
+    Ball.height = Ball.sprite:getHeight()
+end
+
 function Ball:new(x, y)
     self.x = x or 0
     self.y = y or 0
+    self.sprite = Paddle.sprite
+    self.width = Paddle.width
+    self.height = Paddle.height
+
     self.body = love.physics.newBody(world, self.x, self.y, 'dynamic')
     self.body:setMass(32)
     self.body:setLinearVelocity(300, 300)
-    self.shape = love.physics.newCircleShape(0, 0, 10)
+    self.shape = love.physics.newCircleShape(0, 0, self.width / 2)
     self.fixture = love.physics.newFixture(self.body, self.shape)
     self.fixture:setRestitution(1)
     self.fixture:setFriction(0)
@@ -18,12 +28,12 @@ function Ball:new(x, y)
 end
 
 function Ball:draw()
-    local x, y = self.body:getWorldCenter()
-    love.graphics.circle(
-        'fill',
-        x,
-        y,
-        self.shape:getRadius()
+    local x, y = self.body:getPosition()
+
+    love.graphics.draw(
+        Ball.sprite,
+        x - math.floor(self.width / 2),
+        y - math.floor(self.height / 2)
     )
 end
 
