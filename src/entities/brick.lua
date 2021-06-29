@@ -1,14 +1,21 @@
-local state = require 'state'
 local world = require 'world'
 local Object = require 'classic'
 
 Brick = Object:extend()
 
+function Brick.load()
+    Brick.sprite = love.graphics.newImage("spr/brick.png")
+    Brick.width = Brick.sprite:getWidth()
+    Brick.height = Brick.sprite:getHeight()
+end
+
 function Brick:new(x, y)
     self.x = x or 0
     self.y = y or 0
-    self.width = 50
-    self.height = 20
+    self.sprite = Brick.sprite
+    self.width = Brick.width
+    self.height = Brick.height
+
     self.score = 50
     self.max_health = 2
     self.health = self.max_health
@@ -21,9 +28,13 @@ function Brick:new(x, y)
 end
 
 function Brick:draw()
-    love.graphics.setColor(state.palette[self.health] or state.palette[5])
-    love.graphics.polygon('fill', self.body:getWorldPoints(self.shape:getPoints()))
-    love.graphics.setColor(state.palette[5])
+    local x, y = self.body:getPosition()
+
+    love.graphics.draw(
+        Brick.sprite,
+        x - math.floor(self.width / 2),
+        y - math.floor(self.height / 2)
+    )
 end
 
 function Brick:endContact()
