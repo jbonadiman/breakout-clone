@@ -8,7 +8,7 @@ function StageClearText.load()
     StageClearText.font = love.graphics.newFont(64)
     StageClearText.text = love.graphics.newText(
         StageClearText.font,
-        { state.palette[4], 'STAGE CLEARED' }
+        { state.palette['yellow'], 'STAGE CLEARED' }
     )
 
     StageClearText.x = math.floor(windowWidth / 2 - StageClearText.text:getWidth() / 2)

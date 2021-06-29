@@ -9,7 +9,7 @@ function GameOverText.load()
     GameOverText.font = love.graphics.newFont(64)
     GameOverText.text = love.graphics.newText(
         GameOverText.font,
-        { state.palette[5], 'GAME OVER' }
+        { state.palette['white'], 'GAME OVER' }
     )
 
     GameOverText.x = math.floor(windowWidth / 2 - GameOverText.text:getWidth() / 2)
