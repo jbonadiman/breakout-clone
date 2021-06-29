@@ -4,7 +4,7 @@ local Object = require 'classic'
 Ball = Object:extend()
 
 function Ball.load()
-    Ball.sprite = love.graphics.newImage("spr/ball.png")
+    Ball.sprite = love.graphics.newImage("img/ball.png")
     Ball.width = Ball.sprite:getWidth()
     Ball.height = Ball.sprite:getHeight()
 

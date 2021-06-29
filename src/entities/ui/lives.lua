@@ -4,7 +4,7 @@ local Object = require 'classic'
 Heart = Object:extend()
 
 function Heart.load()
-    Heart.sprite = love.graphics.newImage("spr/heart.png")
+    Heart.sprite = love.graphics.newImage("img/heart.png")
     Heart.width = Heart.sprite:getWidth()
     Heart.height = Heart.sprite:getHeight()
 end
@@ -27,7 +27,6 @@ end
 Lives = Object:extend()
 
 function Lives.load()
-
     Heart.load()
 end
 

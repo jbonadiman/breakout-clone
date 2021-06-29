@@ -4,7 +4,7 @@ local Object = require 'classic'
 Brick = Object:extend()
 
 function Brick.load()
-    Brick.sprite = love.graphics.newImage("spr/brick.png")
+    Brick.sprite = love.graphics.newImage("img/brick.png")
     Brick.width = Brick.sprite:getWidth()
     Brick.height = Brick.sprite:getHeight()
 end

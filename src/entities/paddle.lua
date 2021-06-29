@@ -7,7 +7,7 @@ local windowWidth = love.window.getMode()
 Paddle = Object:extend()
 
 function Paddle.load()
-    Paddle.sprite = love.graphics.newImage("spr/paddle.png")
+    Paddle.sprite = love.graphics.newImage("img/paddle.png")
     Paddle.width = Paddle.sprite:getWidth()
     Paddle.height = Paddle.sprite:getHeight()
 end
