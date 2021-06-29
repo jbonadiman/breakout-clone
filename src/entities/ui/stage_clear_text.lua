@@ -1,7 +1,7 @@
 local state = require 'state'
 local Object = require 'classic'
 
-local window_width, window_height = love.window.getMode()
+local windowWidth, windowHeight = love.window.getMode()
 StageClearText = Object:extend()
 
 function StageClearText.load()
@@ -11,8 +11,8 @@ function StageClearText.load()
         { state.palette[4], 'STAGE CLEARED' }
     )
 
-    StageClearText.x = math.floor(window_width / 2 - StageClearText.text:getWidth() / 2)
-    StageClearText.y = math.floor(window_height / 2 - StageClearText.text:getHeight() / 2)
+    StageClearText.x = math.floor(windowWidth / 2 - StageClearText.text:getWidth() / 2)
+    StageClearText.y = math.floor(windowHeight / 2 - StageClearText.text:getHeight() / 2)
 end
 
 function StageClearText:draw()

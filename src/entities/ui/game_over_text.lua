@@ -1,7 +1,7 @@
 local state = require 'state'
 local Object = require 'classic'
 
-local window_width, window_height = love.window.getMode()
+local windowWidth, windowHeight = love.window.getMode()
 
 GameOverText = Object:extend()
 
@@ -12,12 +12,12 @@ function GameOverText.load()
         { state.palette[5], 'GAME OVER' }
     )
 
-    GameOverText.x = math.floor(window_width / 2 - GameOverText.text:getWidth() / 2)
-    GameOverText.y = math.floor(window_height / 2 - GameOverText.text:getHeight() / 2)
+    GameOverText.x = math.floor(windowWidth / 2 - GameOverText.text:getWidth() / 2)
+    GameOverText.y = math.floor(windowHeight / 2 - GameOverText.text:getHeight() / 2)
 end
 
 function GameOverText:draw()
-    if state.game_over then
+    if state.gameOver then
         love.graphics.draw(
             GameOverText.text,
             GameOverText.x,

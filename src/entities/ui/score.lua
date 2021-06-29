@@ -2,7 +2,7 @@ local state = require 'state'
 local Object = require 'classic'
 
 Score = Object:extend()
-local window_width = love.window.getMode()
+local windowWidth = love.window.getMode()
 
 function Score.load()
     Score.font = love.graphics.newFont(16)
@@ -18,7 +18,7 @@ function Score:draw()
 
     love.graphics.draw(
         Score.text,
-        window_width - Score.text:getWidth() - 16,
+        windowWidth - Score.text:getWidth() - 16,
         16
     )
 end

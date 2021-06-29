@@ -2,16 +2,16 @@ local state = require('state')
 
 local press_functions = {
     left = function()
-        state.button_left = true
+        state.buttonLeft = true
     end,
     right = function()
-        state.button_right = true
+        state.buttonRight = true
     end,
     escape = function()
         love.event.quit()
     end,
     space = function()
-        if state.game_over or state.stage_cleared then
+        if state.gameOver or state.stage_cleared then
             return
         end
 
@@ -20,10 +20,10 @@ local press_functions = {
 }
 local release_functions = {
     left = function()
-        state.button_left = false
+        state.buttonLeft = false
     end,
     right = function()
-        state.button_right = false
+        state.buttonRight = false
     end
 }
 

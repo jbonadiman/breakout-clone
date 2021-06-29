@@ -9,7 +9,7 @@ end
 
 function BoundaryContact:endContact()
     state.lives = state.lives - 1
-    state.game_over = state.lives < 1
+    state.gameOver = state.lives < 1
 end
 
 return BoundaryContact

@@ -1,7 +1,7 @@
 return {
     button_left = false,
     button_right = false,
-    game_over = false,
+    gameOver = false,
     palette = {
         { 1.0, 0.0, 0.0, 1.0 }, -- red
         { 0.0, 1.0, 0.0, 1.0 }, -- green

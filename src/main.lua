@@ -25,7 +25,7 @@ love.keyreleased = function(pressed_key)
 end
 
 love.update = function(dt)
-    if state.game_over or state.paused or state.stage_cleared then
+    if state.gameOver or state.paused or state.stage_cleared then
         return
     end
 

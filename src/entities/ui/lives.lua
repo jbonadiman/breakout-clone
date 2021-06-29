@@ -27,7 +27,6 @@ end
 Lives = Object:extend()
 
 function Lives.load()
-    Lives.padding = 2
 
     Heart.load()
 end
@@ -35,12 +34,13 @@ end
 function Lives:new(x, y)
     self.x = x or 0
     self.y = y or 0
-
     self.lives = {}
+
+    local padding = 2
 
     for i = 1, state.lives do
         self.lives[i] = Heart(
-            self.x + (Heart.width + Lives.padding) * (i - 1),
+            self.x + (Heart.width + padding) * (i - 1),
             self.y)
     end
 end

@@ -1,17 +1,17 @@
-local end_contact_callback = function(a, b, contact)
-    local entity_a = a:getUserData()
-    local entity_b = b:getUserData()
+local endContactCallback = function(a, b, contact)
+    local entityA = a:getUserData()
+    local entityB = b:getUserData()
 
-    if entity_a.endContact then
-        entity_a:endContact()
+    if entityA.endContact then
+        entityA:endContact()
     end
-    if entity_b.endContact then
-        entity_b:endContact()
+    if entityB.endContact then
+        entityB:endContact()
     end
 end
 
 local world = love.physics.newWorld(0, 0)
 
-world:setCallbacks(nil, end_contact_callback, nil, nil)
+world:setCallbacks(nil, endContactCallback, nil, nil)
 
 return world

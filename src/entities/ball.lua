@@ -2,12 +2,13 @@ local world = require 'world'
 local Object = require 'classic'
 
 Ball = Object:extend()
-Ball.max_speed = 880
 
 function Ball.load()
     Ball.sprite = love.graphics.newImage("spr/ball.png")
     Ball.width = Ball.sprite:getWidth()
     Ball.height = Ball.sprite:getHeight()
+
+    Ball.maxSpeed = 880
 end
 
 function Ball:new(x, y)
@@ -38,17 +39,17 @@ function Ball:draw()
 end
 
 function Ball:update()
-    local vel_x, vel_y = self.body:getLinearVelocity()
-    local speed = math.abs(vel_x) + math.abs(vel_y)
+    local velX, velY = self.body:getLinearVelocity()
+    local speed = math.abs(velX) + math.abs(velY)
 
-    local vel_x_is_critical = math.abs(vel_x) > Ball.max_speed * 2
-    local vel_y_is_critical = math.abs(vel_y) > Ball.max_speed * 2
+    local velXIsCritical = math.abs(velX) > Ball.maxSpeed * 2
+    local velYIsCritical = math.abs(velY) > Ball.maxSpeed * 2
 
-    if vel_x_is_critical or vel_y_is_critical then
-        self.body:setLinearVelocity(vel_x * .75, vel_y * .75)
+    if velXIsCritical or velYIsCritical then
+        self.body:setLinearVelocity(velX * .75, velY * .75)
     end
 
-    if speed > Ball.max_speed then
+    if speed > Ball.maxSpeed then
         self.body:setLinearDamping(0.1)
     else
         self.body:setLinearDamping(0)
