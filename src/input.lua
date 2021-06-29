@@ -11,7 +11,7 @@ local press_functions = {
         love.event.quit()
     end,
     space = function()
-        if state.gameOver or state.stage_cleared then
+        if state.gameOver or state.stageCleared then
             return
         end
 

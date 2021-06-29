@@ -17,9 +17,8 @@ function Brick:new(x, y)
     self.height = Brick.height
 
     self.score = 50
-    self.max_health = 2
-    self.health = self.max_health
-    self.type = 'brick'
+    self.maxHealth = 2
+    self.health = self.maxHealth
 
     self.body = love.physics.newBody(world, x, y, 'static')
     self.shape = love.physics.newRectangleShape(self.width, self.height)

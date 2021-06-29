@@ -16,7 +16,7 @@ function StageClearText.load()
 end
 
 function StageClearText:draw()
-    if state.stage_cleared then
+    if state.stageCleared then
         love.graphics.draw(
             StageClearText.text,
             StageClearText.x,
