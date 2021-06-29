@@ -18,6 +18,7 @@ Entities.classes = {
     Boundary,
     BoundaryContact,
     Paddle,
+    Brick,
     Ball,
     Lives,
     Score,
@@ -47,11 +48,19 @@ function Entities.new()
         Ball(200, 200),
     }
 
-    local row_width = love.window.getMode() - 20
-    for number = 0, 38 do
-        local brick_x = ((number * 60) % row_width) + 40
-        local brick_y = (math.floor((number * 60) / row_width) * 40) + 80
-        Entities.instances[#Entities.instances + 1] = Brick(brick_x, brick_y)
+    local windowWidth = love.window.getMode()
+    local brickCount = 40
+    local columns = 10
+
+    local horizontalPadding = (windowWidth - (columns * Brick.width)) / 2
+    local verticalPadding = Brick.height * 2
+    local betweenPadding = 2
+
+    for i = 0, (brickCount - 1) do
+        local x = horizontalPadding + (i % columns) * (Brick.width + betweenPadding)
+        local y = verticalPadding + math.floor(i / columns) * (Brick.height + betweenPadding)
+
+        Entities.instances[#Entities.instances + 1] = Brick(x, y)
     end
 
     Entities.ui = {
