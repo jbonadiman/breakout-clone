@@ -12,6 +12,8 @@ end
 function Heart:new(x, y)
     self.x = x or 0
     self.y = y or 0
+    self.width = Heart.width
+    self.height = Heart.height
 end
 
 function Heart:draw()
@@ -25,6 +27,8 @@ end
 Lives = Object:extend()
 
 function Lives.load()
+    Lives.padding = 2
+
     Heart.load()
 end
 
@@ -36,7 +40,7 @@ function Lives:new(x, y)
 
     for i = 1, state.lives do
         self.lives[i] = Heart(
-            Heart.width * (i - 1) + self.x,
+            self.x + (Heart.width + Lives.padding) * (i - 1),
             self.y)
     end
 end
@@ -48,9 +52,9 @@ function Lives:draw()
 end
 
 function Lives:update()
-    local lives_diff = #self.lives - state.lives
+    local livesDifference = #self.lives - state.lives
 
-    for _ = 1, lives_diff do
+    for _ = 1, livesDifference do
         table.remove(self.lives, #self.lives)
     end
 end
