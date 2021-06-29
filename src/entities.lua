@@ -9,6 +9,7 @@ local GameOverText = require 'entities/ui/game_over_text'
 local StageClearText = require 'entities/ui/stage_clear_text'
 local Lives = require 'entities/ui/lives'
 local Score = require 'entities/ui/score'
+local Background = require 'entities/ui/background'
 
 local Object = require 'classic'
 
@@ -20,11 +21,13 @@ Entities.classes = {
     Paddle,
     Brick,
     Ball,
+
     Lives,
     Score,
     PauseOverlay,
     GameOverText,
     StageClearText,
+    Background,
 }
 
 Entities.instances = {}
@@ -39,6 +42,8 @@ function Entities.load()
 end
 
 function Entities.new()
+    Entities.background = Background()
+
     Entities.instances = {
         Boundary(-6, 300, 10, 600),         -- left
         Boundary(806, 300, 10, 600),        -- right
@@ -73,6 +78,8 @@ function Entities.new()
 end
 
 function Entities.draw()
+    Entities.background:draw()
+
     for _, instance in ipairs(Entities.instances) do
         if instance.draw then
             instance:draw()
